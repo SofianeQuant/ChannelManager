@@ -112,16 +112,24 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:v
 .cal-leg{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
 .leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
 .ldot{width:9px;height:9px;border-radius:2px;}
-.cal-wrap{background:var(--card);border-radius:var(--r);padding:14px;border:1px solid var(--border);}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
-.cdname{text-align:center;font-size:10px;font-weight:600;color:var(--text2);padding:0 0 8px;}
-.ccell{aspect-ratio:1;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:500;}
-.ccell.today{background:#1A1A1A!important;color:#fff!important;font-weight:700;border-radius:50%;}
-.ccell.past{opacity:.28;}
-.ccell.airbnb{background:#FFF0F0;color:#CC2222;}
-.ccell.booking{background:#EEF2FF;color:var(--booking);}
-.ccell.both{background:#F5F0FF;color:#5B4FCF;}
-.cdot{width:4px;height:4px;border-radius:50%;margin-top:2px;}
+.cal-wrap{background:var(--card);border-radius:var(--r);padding:10px 8px;border:1px solid var(--border);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0;}
+.cdname{text-align:center;font-size:10px;font-weight:600;color:var(--text2);padding:0 0 10px;}
+.ccell{position:relative;display:flex;flex-direction:column;align-items:center;padding:6px 0 22px;min-height:52px;}
+.ccell .cnum{font-size:13px;font-weight:500;color:var(--text);width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:2;position:relative;}
+.ccell.today .cnum{background:#1A1A1A;color:#fff;font-weight:700;}
+.ccell.past .cnum{color:var(--text3);}
+.cbar{position:absolute;bottom:6px;left:0;right:0;height:18px;display:flex;align-items:center;padding:0 2px;}
+.cbar-inner{height:14px;border-radius:0;width:100%;display:flex;align-items:center;overflow:hidden;}
+.cbar-inner.airbnb{background:#FFD6D7;}
+.cbar-inner.booking{background:#C8D8F5;}
+.cbar-inner.both{background:#E0D0FF;}
+.cbar-inner.start{border-radius:7px 0 0 7px;margin-left:4px;}
+.cbar-inner.end{border-radius:0 7px 7px 0;margin-right:4px;}
+.cbar-inner.solo{border-radius:7px;margin:0 4px;}
+.cbar-label{font-size:9px;font-weight:700;padding-left:5px;white-space:nowrap;overflow:hidden;color:#555;}
+.cbar-label.airbnb{color:#CC2222;}
+.cbar-label.booking{color:#003B95;}
 .empty-state{text-align:center;padding:50px 20px;color:var(--text2);font-size:14px;line-height:1.6;}
 </style>
 </head>
@@ -326,6 +334,11 @@ function getDaySt(ds){
   if(a&&bv)return'both';if(a)return'airbnb';if(bv)return'booking';return'';
 }
 
+function getBookingsForDay(ds){
+  const d=new Date(ds+'T12:00:00');
+  return S.bk.filter(b=>d>=new Date(b.ci+'T12:00:00')&&d<new Date(b.co+'T12:00:00'));
+}
+
 function renderCalendar(){
   document.getElementById('cal-title').textContent=MONTHS[S.calM]+' '+S.calY;
   const today=new Date();today.setHours(0,0,0,0);
@@ -337,11 +350,25 @@ function renderCalendar(){
     const ds=`${S.calY}-${String(S.calM+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const cD=new Date(ds+'T12:00:00');
     const isT=cD.getTime()===today.getTime(),isP=cD<today;
-    const st=S.loaded?getDaySt(ds):'';
-    const dc=st==='airbnb'?'#FF5A5F':st==='booking'?'var(--booking)':st==='both'?'#7B6CF6':'';
-    html+=`<div class="ccell ${st}${isP&&!isT?' past':''}${isT?' today':''}">
-      <span style="font-size:12px">${d}</span>
-      ${dc?`<div class="cdot" style="background:${dc}"></div>`:''}
+    const bookings=S.loaded?getBookingsForDay(ds):[];
+    const hasAir=bookings.some(b=>b.platform==='airbnb');
+    const hasBk=bookings.some(b=>b.platform==='booking');
+    const plat=hasAir&&hasBk?'both':hasAir?'airbnb':hasBk?'booking':'';
+    
+    let barHtml='';
+    if(plat&&S.loaded){
+      // Find the main booking for this day
+      const mainB=bookings[0];
+      const isStart=mainB&&ds===mainB.ci;
+      const isEnd=mainB&&ds===new Date(new Date(mainB.co+'T12:00:00').getTime()-86400000).toISOString().slice(0,10);
+      const cls=isStart&&isEnd?'solo':isStart?'start':isEnd?'end':'';
+      const shortName=mainB?mainB.name.split(' ')[0]:'';
+      barHtml=`<div class="cbar"><div class="cbar-inner ${plat} ${cls}">${isStart?`<span class="cbar-label ${plat}">${shortName}</span>`:''}</div></div>`;
+    }
+    
+    html+=`<div class="ccell${isP&&!isT?' past':''}${isT?' today':''}">
+      <span class="cnum">${d}</span>
+      ${barHtml}
     </div>`;
   }
   document.getElementById('cal-grid').innerHTML=html;
