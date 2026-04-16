@@ -253,7 +253,7 @@ const fmtDow=ds=>{const d=new Date(ds+'T12:00:00');return DAYS_FR[d.getDay()===0
 function urgency(ds){
   const today=new Date();today.setHours(0,0,0,0);
   const diff=Math.round((new Date(ds+'T12:00:00')-today)/86400000);
-  if(diff===0) return {c:'today',t:"Aujourd'hui"};
+  if(diff===0) return {c:'today',t:"Auj. m\u00eame"};
   if(diff===1) return {c:'tomorrow',t:'Demain'};
   if(diff<=5) return {c:'soon',t:'Dans '+diff+' j'};
   return {c:'ok',t:'J+'+diff};
