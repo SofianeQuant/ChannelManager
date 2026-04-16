@@ -8,435 +8,350 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="VELORA">
 <meta name="theme-color" content="#1A1A1A">
-<title>Channel Manager VELORA</title>
+<title>VELORA — Channel Manager</title>
 <link rel="apple-touch-icon" href="data:image/png;base64,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">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --airbnb: #FF5A5F;
-  --booking: #003B95;
-  --gold: #D4AF37;
-  --bg: #F7F6F3;
-  --card: #FFFFFF;
-  --text: #1A1A1A;
-  --text2: #888;
-  --text3: #BBB;
-  --border: rgba(0,0,0,0.08);
-  --radius: 16px;
-  --success: #2D9B6F;
-  --success-bg: #EAF5EF;
-  --warn: #C47D00;
-  --warn-bg: #FFF5E0;
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
-}
+:root{--airbnb:#FF5A5F;--booking:#003B95;--gold:#D4AF37;--bg:#F7F6F3;--card:#fff;--text:#1A1A1A;--text2:#888;--text3:#BBB;--border:rgba(0,0,0,0.08);--r:16px;--ok:#2D9B6F;--ok-bg:#EAF5EF;--warn:#C47D00;--warn-bg:#FFF5E0;--sb:env(safe-area-inset-bottom,0px);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;}
 body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;max-width:480px;margin:0 auto;}
 
+/* SPLASH */
 #splash{position:fixed;inset:0;z-index:9999;background:#1A1A1A;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s;}
 #splash.hide{opacity:0;pointer-events:none;}
-.splash-logo{width:80px;height:80px;border-radius:20px;margin-bottom:20px;}
-.splash-title{font-size:24px;font-weight:600;color:white;letter-spacing:0.15em;}
-.splash-sub{font-size:13px;color:var(--gold);margin-top:6px;letter-spacing:0.08em;}
-.splash-loader{margin-top:40px;display:flex;gap:6px;}
-.splash-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:sdot 1.2s infinite;}
-.splash-dot:nth-child(2){animation-delay:0.2s;}
-.splash-dot:nth-child(3){animation-delay:0.4s;}
+.sp-logo{width:80px;height:80px;border-radius:20px;margin-bottom:20px;}
+.sp-title{font-size:26px;font-weight:600;color:#fff;letter-spacing:0.15em;}
+.sp-sub{font-size:13px;color:var(--gold);margin-top:6px;letter-spacing:0.08em;}
+.sp-status{font-size:12px;color:rgba(255,255,255,0.4);margin-top:30px;}
+.sp-loader{margin-top:12px;display:flex;gap:6px;}
+.sp-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:sdot 1.2s infinite;}
+.sp-dot:nth-child(2){animation-delay:.2s;}.sp-dot:nth-child(3){animation-delay:.4s;}
 @keyframes sdot{0%,80%,100%{opacity:0.2}40%{opacity:1}}
 
+/* TOPBAR */
 .topbar{background:#1A1A1A;padding:52px 20px 14px;flex-shrink:0;}
-.topbar-inner{display:flex;align-items:center;justify-content:space-between;}
-.topbar-brand{display:flex;align-items:center;gap:10px;}
-.topbar-logo{width:32px;height:32px;border-radius:8px;}
-.topbar-name{font-size:16px;font-weight:600;color:white;letter-spacing:0.05em;}
-.topbar-sub{font-size:11px;color:var(--gold);margin-top:1px;}
-.sync-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.1);border-radius:20px;padding:5px 12px;cursor:pointer;}
-.sync-dot{width:6px;height:6px;border-radius:50%;background:#4CAF50;}
-.sync-dot.syncing{background:var(--gold);animation:blink 1s infinite;}
-.sync-dot.error{background:#FF5A5F;}
-.sync-text{font-size:11px;color:rgba(255,255,255,0.7);}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.tb-inner{display:flex;align-items:center;justify-content:space-between;}
+.tb-brand{display:flex;align-items:center;gap:10px;}
+.tb-logo{width:32px;height:32px;border-radius:8px;}
+.tb-name{font-size:16px;font-weight:600;color:#fff;letter-spacing:0.06em;}
+.tb-sub{font-size:11px;color:var(--gold);margin-top:1px;}
+.sync-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border-radius:20px;padding:6px 13px;cursor:pointer;border:none;font-family:inherit;}
+.sync-pill:active{background:rgba(255,255,255,0.18);}
+.sdot{width:7px;height:7px;border-radius:50%;background:#4CAF50;transition:background .3s;}
+.sdot.loading{background:var(--gold);animation:blink 1s infinite;}
+.sdot.err{background:var(--airbnb);}
+.stext{font-size:11px;color:rgba(255,255,255,0.7);}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-.scroll-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(80px + var(--safe-bottom));}
-.section{display:none;animation:fadeIn 0.2s;}
+/* LAYOUT */
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(76px + var(--sb));}
+.section{display:none;animation:fi .2s;}
 .section.active{display:block;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:white;border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-bottom);z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,0.06);}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 4px 8px;cursor:pointer;color:var(--text3);}
-.nav-item.active{color:#1A1A1A;}
-.nav-icon{font-size:22px;line-height:1;margin-bottom:3px;}
-.nav-label{font-size:10px;font-weight:500;}
-.nav-item.active .nav-label{font-weight:600;}
+/* BOTTOM NAV */
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--border);display:flex;padding-bottom:var(--sb);z-index:100;box-shadow:0 -2px 16px rgba(0,0,0,0.06);}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;cursor:pointer;color:var(--text3);border:none;background:none;font-family:inherit;}
+.ni.active{color:var(--text);}
+.ni-icon{font-size:21px;line-height:1;margin-bottom:3px;}
+.ni-label{font-size:10px;font-weight:500;}
+.ni.active .ni-label{font-weight:700;}
 
+/* LOADING / ERROR */
 .loading{text-align:center;padding:60px 20px;}
-.spinner{width:32px;height:32px;border:2.5px solid var(--border);border-top-color:#1A1A1A;border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 14px;}
+.spinner{width:30px;height:30px;border:2.5px solid var(--border);border-top-color:var(--text);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .loading p{font-size:13px;color:var(--text2);}
-.loading small{font-size:11px;color:var(--text3);display:block;margin-top:8px;}
+.loading small{font-size:11px;color:var(--text3);display:block;margin-top:6px;}
+.ebox{background:#FFF0F0;border:1px solid rgba(255,90,95,.2);border-radius:12px;padding:14px;font-size:13px;color:#CC2222;margin-bottom:12px;line-height:1.6;}
+.retry{width:100%;margin-top:10px;padding:11px;background:var(--text);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
 
-.error-box{background:#FFF0F0;border:1px solid rgba(255,90,95,0.2);border-radius:12px;padding:14px;font-size:13px;color:#CC2222;margin-bottom:12px;line-height:1.5;}
-.warn-box{background:var(--warn-bg);border:1px solid rgba(196,125,0,0.2);border-radius:12px;padding:14px;font-size:13px;color:var(--warn);margin-bottom:12px;line-height:1.5;}
-.retry-btn{display:block;width:100%;margin-top:10px;padding:10px;background:#1A1A1A;color:white;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+/* CARDS */
+.sec-title{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin:20px 0 10px;}
+.sec-title:first-child{margin-top:0;}
 
-.section-title{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.08em;margin:20px 0 10px;}
-.section-title:first-child{margin-top:0;}
+.menage-hdr{background:#1A1A1A;border-radius:var(--r);padding:18px 20px;margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.menage-hdr h2{font-size:16px;font-weight:600;color:#fff;}
+.menage-hdr p{font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;}
 
-.menage-header{background:#1A1A1A;border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;display:flex;align-items:center;gap:14px;}
-.menage-icon{font-size:32px;}
-.menage-header h2{font-size:16px;font-weight:600;color:white;}
-.menage-header p{font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;}
+.tcard-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.tcard-date{font-size:13px;font-weight:600;}
+.urg{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
+.urg.today{background:#FFE8E8;color:#CC2222;}
+.urg.tomorrow{background:var(--warn-bg);color:var(--warn);}
+.urg.soon{background:#EEF2FF;color:#4F5BD5;}
+.urg.ok{background:var(--ok-bg);color:var(--ok);}
+.trow{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--border);}
+.ttype{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;letter-spacing:.05em;flex-shrink:0;margin-top:2px;}
+.ttype.out{background:#FFE8E8;color:#CC2222;}
+.ttype.in{background:#E8F0FF;color:var(--booking);}
+.tname{font-size:14px;font-weight:600;}
+.tdetail{font-size:12px;color:var(--text2);margin-top:2px;}
+.tplat{font-size:11px;font-weight:600;margin-top:3px;}
 
-.task-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
-.task-date-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-.task-date-label{font-size:13px;font-weight:600;}
-.urgency{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
-.urgency.today{background:#FFE8E8;color:#CC2222;}
-.urgency.tomorrow{background:var(--warn-bg);color:var(--warn);}
-.urgency.soon{background:#EEF2FF;color:#4F5BD5;}
-.urgency.ok{background:var(--success-bg);color:var(--success);}
-.task-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--border);}
-.task-type{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;letter-spacing:0.05em;flex-shrink:0;margin-top:2px;}
-.task-type.out{background:#FFE8E8;color:#CC2222;}
-.task-type.in{background:#E8F0FF;color:var(--booking);}
-.task-name{font-size:14px;font-weight:600;}
-.task-detail{font-size:12px;color:var(--text2);margin-top:2px;}
-.task-plat{font-size:11px;font-weight:600;margin-top:3px;}
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;}
+.rcard-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.rplat{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;}
+.pdot{width:8px;height:8px;border-radius:50%;}
+.rconf{font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--ok-bg);color:var(--ok);}
+.rname{font-size:17px;font-weight:600;margin-bottom:3px;}
+.rnights{font-size:13px;color:var(--text2);}
+.rdates{display:flex;margin-top:12px;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.rdate{flex:1;padding:10px 12px;}
+.rdate:first-child{border-right:1px solid var(--border);}
+.rdlbl{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.rdval{font-size:15px;font-weight:600;}
+.rddow{font-size:11px;color:var(--text2);margin-top:1px;}
 
-.reserv-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px;}
-.rv-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.rv-plat{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;}
-.plat-dot{width:8px;height:8px;border-radius:50%;}
-.rv-confirmed{font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--success-bg);color:var(--success);}
-.rv-name{font-size:17px;font-weight:600;margin-bottom:3px;}
-.rv-nights{font-size:13px;color:var(--text2);}
-.rv-dates{display:flex;margin-top:12px;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-.rv-date{flex:1;padding:10px 12px;}
-.rv-date:first-child{border-right:1px solid var(--border);}
-.rv-date-lbl{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
-.rv-date-val{font-size:15px;font-weight:600;}
-.rv-date-day{font-size:11px;color:var(--text2);margin-top:1px;}
-
+/* CALENDAR */
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .cal-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text2);}
-.cal-month{font-size:16px;font-weight:600;}
-.cal-legend{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
+.cal-mo{font-size:16px;font-weight:600;}
+.cal-leg{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;}
 .leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
-.leg-dot{width:9px;height:9px;border-radius:2px;}
-.cal-wrap{background:var(--card);border-radius:var(--radius);padding:14px;border:1px solid var(--border);}
+.ldot{width:9px;height:9px;border-radius:2px;}
+.cal-wrap{background:var(--card);border-radius:var(--r);padding:14px;border:1px solid var(--border);}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
-.cal-dname{text-align:center;font-size:10px;font-weight:600;color:var(--text2);padding:0 0 8px;}
-.cal-cell{aspect-ratio:1;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:500;}
-.cal-cell.today{background:#1A1A1A!important;color:white!important;font-weight:700;border-radius:50%;}
-.cal-cell.past{opacity:0.28;}
-.cal-cell.airbnb{background:#FFF0F0;color:#CC2222;}
-.cal-cell.booking{background:#EEF2FF;color:var(--booking);}
-.cal-cell.both{background:#F5F0FF;color:#5B4FCF;}
-.cell-dot{width:4px;height:4px;border-radius:50%;margin-top:2px;}
+.cdname{text-align:center;font-size:10px;font-weight:600;color:var(--text2);padding:0 0 8px;}
+.ccell{aspect-ratio:1;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:500;}
+.ccell.today{background:#1A1A1A!important;color:#fff!important;font-weight:700;border-radius:50%;}
+.ccell.past{opacity:.28;}
+.ccell.airbnb{background:#FFF0F0;color:#CC2222;}
+.ccell.booking{background:#EEF2FF;color:var(--booking);}
+.ccell.both{background:#F5F0FF;color:#5B4FCF;}
+.cdot{width:4px;height:4px;border-radius:50%;margin-top:2px;}
 .empty-state{text-align:center;padding:50px 20px;color:var(--text2);font-size:14px;line-height:1.6;}
 </style>
 </head>
 <body>
 
 <div id="splash">
-  <img class="splash-logo" src="data:image/png;base64,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" alt="VELORA">
-  <div class="splash-title">VELORA</div>
-  <div class="splash-sub">Channel Manager</div>
-  <div class="splash-loader">
-    <div class="splash-dot"></div><div class="splash-dot"></div><div class="splash-dot"></div>
-  </div>
+  <img class="sp-logo" src="data:image/png;base64,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" alt="VELORA">
+  <div class="sp-title">VELORA</div>
+  <div class="sp-sub">Channel Manager</div>
+  <div class="sp-status" id="sp-status">Connexion aux calendriers…</div>
+  <div class="sp-loader"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>
 </div>
 
 <div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-brand">
-      <img class="topbar-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABb0lEQVR4nO3Vv0sCYRgH8O/9MPSUBKWGy0UawoJATLQhkMI/o6bmptbam/sDGtvbTgMbxLNwcBAChwLBQqgo8bzj7rq34fSUoNfDH0Nwz3C89z7wfJ73eQ+OEUURiwx2odU9wAP+B8BTchcnK8kNP4Crm69rqTue2ksKZ8dRAJ0P8+j8lZA/i9BOIMmKvchng79S+YxgLwrVPqX6BKBcV3uqBSC2yifiS85+OMSmtwIACEGhqtDK0wHdIKVaf9jy6BAH6SDHAkC9qXXezekBAFJl0GAuJfh4ZoANJ+bMcHqg2dKf2gaAkMDubgcAxEXfeswHoKda5bo6KwCg4Fx1RsBY+6VaXzeo9+sSuH1QTJMA2NkMRMPcfnrw/TjTmxXoKpbc0ABwLE4PI5FlDsDzi9Fs6fMBAEiVnr1IJfzDHaWdy88NqD1qb5/fzqtpkkuSBeDGcAVYFor3o4nLDW3trgjAftKD8X76HuABHjA5fgDtT3ocHNAU0wAAAABJRU5ErkJggg==" alt="">
-      <div>
-        <div class="topbar-name">VELORA</div>
-        <div class="topbar-sub">2 pl Francis Chirat · Marseille</div>
-      </div>
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <img class="tb-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABb0lEQVR4nO3Vv0sCYRgH8O/9MPSUBKWGy0UawoJATLQhkMI/o6bmptbam/sDGtvbTgMbxLNwcBAChwLBQqgo8bzj7rq34fSUoNfDH0Nwz3C89z7wfJ73eQ+OEUURiwx2odU9wAP+B8BTchcnK8kNP4Crm69rqTue2ksKZ8dRAJ0P8+j8lZA/i9BOIMmKvchng79S+YxgLwrVPqX6BKBcV3uqBSC2yifiS85+OMSmtwIACEGhqtDK0wHdIKVaf9jy6BAH6SDHAkC9qXXezekBAFJl0GAuJfh4ZoANJ+bMcHqg2dKf2gaAkMDubgcAxEXfeswHoKda5bo6KwCg4Fx1RsBY+6VaXzeo9+sSuH1QTJMA2NkMRMPcfnrw/TjTmxXoKpbc0ABwLE4PI5FlDsDzi9Fs6fMBAEiVnr1IJfzDHaWdy88NqD1qb5/fzqtpkkuSBeDGcAVYFor3o4nLDW3trgjAftKD8X76HuABHjA5fgDtT3ocHNAU0wAAAABJRU5ErkJggg==" alt="">
+      <div><div class="tb-name">VELORA</div><div class="tb-sub">2 pl Francis Chirat · Marseille</div></div>
     </div>
-    <div class="sync-pill" onclick="loadAll()">
-      <div class="sync-dot" id="sync-dot"></div>
-      <span class="sync-text" id="sync-text">Actualiser</span>
-    </div>
+    <button class="sync-pill" onclick="loadAll()">
+      <div class="sdot" id="sdot"></div>
+      <span class="stext" id="stext">Actualiser</span>
+    </button>
   </div>
 </div>
 
-<div class="scroll-area">
+<div class="scroll">
   <div id="menage" class="section active">
-    <div class="menage-header">
-      <div class="menage-icon">🧹</div>
-      <div><h2>Planning ménage</h2><p>Départs &amp; arrivées à préparer</p></div>
-    </div>
-    <div id="menage-content"><div class="loading"><div class="spinner"></div><p>Connexion aux calendriers…</p><small>Airbnb &amp; Booking.com</small></div></div>
+    <div class="menage-hdr"><div style="font-size:32px">🧹</div><div><h2>Planning ménage</h2><p>Départs &amp; arrivées à préparer</p></div></div>
+    <div id="mc"><div class="loading"><div class="spinner"></div><p>Connexion aux calendriers…</p><small>Via votre proxy sécurisé</small></div></div>
   </div>
   <div id="reservations" class="section">
-    <div id="reserv-content"><div class="loading"><div class="spinner"></div><p>Chargement…</p></div></div>
+    <div id="rc"><div class="loading"><div class="spinner"></div><p>Chargement…</p></div></div>
   </div>
   <div id="calendar" class="section">
     <div class="cal-nav">
-      <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
-      <span class="cal-month" id="cal-title">—</span>
-      <button class="cal-btn" onclick="changeMonth(1)">›</button>
+      <button class="cal-btn" onclick="chMo(-1)">‹</button>
+      <span class="cal-mo" id="cal-title">—</span>
+      <button class="cal-btn" onclick="chMo(1)">›</button>
     </div>
-    <div class="cal-legend">
-      <div class="leg"><div class="leg-dot" style="background:#FF5A5F"></div>Airbnb</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--booking)"></div>Booking</div>
-      <div class="leg"><div class="leg-dot" style="background:#7B6CF6"></div>Les deux</div>
+    <div class="cal-leg">
+      <div class="leg"><div class="ldot" style="background:#FF5A5F"></div>Airbnb</div>
+      <div class="leg"><div class="ldot" style="background:var(--booking)"></div>Booking</div>
+      <div class="leg"><div class="ldot" style="background:#7B6CF6"></div>Les deux</div>
     </div>
     <div class="cal-wrap"><div class="cal-grid" id="cal-grid"></div></div>
   </div>
 </div>
 
-<div class="bottom-nav">
-  <div class="nav-item active" onclick="showTab('menage',this)">
-    <div class="nav-icon">🧹</div><div class="nav-label">Ménage</div>
-  </div>
-  <div class="nav-item" onclick="showTab('reservations',this)">
-    <div class="nav-icon">📋</div><div class="nav-label">Séjours</div>
-  </div>
-  <div class="nav-item" onclick="showTab('calendar',this)">
-    <div class="nav-icon">📅</div><div class="nav-label">Calendrier</div>
-  </div>
+<div class="bnav">
+  <button class="ni active" onclick="showTab('menage',this)"><div class="ni-icon">🧹</div><div class="ni-label">Ménage</div></button>
+  <button class="ni" onclick="showTab('reservations',this)"><div class="ni-icon">📋</div><div class="ni-label">Séjours</div></button>
+  <button class="ni" onclick="showTab('calendar',this)"><div class="ni-icon">📅</div><div class="ni-label">Calendrier</div></button>
 </div>
 
 <script>
+const PROXY = 'https://script.google.com/macros/s/AKfycbzCrqs-TYbAD0BPui4ScA7V8KgKZvwm2n1782J_7C69jJNOGPvHBknVtOpGBrMkvI62Jw/exec';
 const AIRBNB_URL = 'https://www.airbnb.fr/calendar/ical/1663980886187139384.ics?t=4d5885c92ddf442799a7228450482e29';
 const BOOKING_URL = 'https://ical.booking.com/v1/export?t=2318d43e-e6a7-4771-a52a-75abe1b72fa9';
-
-// Multiple CORS proxies — essaie dans l'ordre jusqu'à ce qu'un marche
-const PROXIES = [
-  url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
-  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-  url => `https://api.codetabs.com/v1/proxy?quest=${url}`,
-];
-
 const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-const DAYS_SHORT = ['L','M','M','J','V','S','D'];
+const DAYS = ['L','M','M','J','V','S','D'];
 const DAYS_FR = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+let S = {bk:[], calM:new Date().getMonth(), calY:new Date().getFullYear(), loaded:false};
 
-let STATE = { bookings:[], calMonth:new Date().getMonth(), calYear:new Date().getFullYear(), loaded:false };
-
-// Essaie chaque proxy jusqu'à succès
-async function fetchWithFallback(url) {
-  let lastErr;
-  for (const proxyFn of PROXIES) {
-    try {
-      const proxyUrl = proxyFn(url);
-      const res = await fetch(proxyUrl, {signal: AbortSignal.timeout(8000)});
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json().catch(() => res.text().then(t => ({contents: t})));
-      const text = data.contents || data;
-      if (typeof text === 'string' && text.includes('BEGIN:VCALENDAR')) return text;
-      throw new Error('Réponse iCal invalide');
-    } catch(e) {
-      lastErr = e;
-      continue;
-    }
-  }
-  throw new Error(lastErr?.message || 'Tous les proxies ont échoué');
+async function fetchIcal(url, platform) {
+  const proxyUrl = PROXY + '?url=' + encodeURIComponent(url);
+  const res = await fetch(proxyUrl, {signal: AbortSignal.timeout(15000)});
+  if (!res.ok) throw new Error('Erreur HTTP ' + res.status);
+  const text = await res.text();
+  if (!text.includes('BEGIN:VCALENDAR')) throw new Error('Format iCal invalide');
+  return parseICS(text, platform);
 }
 
 function parseICS(text, platform) {
-  const events = [];
+  const evts = [];
   const blocks = text.split('BEGIN:VEVENT');
   for (let i = 1; i < blocks.length; i++) {
     const b = blocks[i];
-    const get = k => { const m = b.match(new RegExp(k + '[^:]*:([^\r\n]+)')); return m ? m[1].trim() : ''; };
-    const dtstart = get('DTSTART'), dtend = get('DTEND');
-    const summary = get('SUMMARY'), status = get('STATUS');
-    if (!dtstart || !dtend) continue;
-    const skip = ['Not available','Airbnb (Not available)','Blocked','CLOSED','Unavailable'];
-    if (skip.some(s => summary.includes(s))) continue;
+    const get = k => { const m = b.match(new RegExp(k+'[^:]*:([^\r\n]+)')); return m?m[1].trim():''; };
+    const dtstart=get('DTSTART'), dtend=get('DTEND'), summary=get('SUMMARY'), status=get('STATUS');
+    if (!dtstart||!dtend) continue;
+    const SKIP=['Not available','Airbnb (Not available)','Blocked','CLOSED','Unavailable'];
+    if (SKIP.some(s=>summary.includes(s))) continue;
     const pd = s => {
-      const c = s.replace(/T.*/, '').replace(/-/g,'');
-      if (c.length < 8) return null;
-      return new Date(c.slice(0,4) + '-' + c.slice(4,6) + '-' + c.slice(6,8) + 'T12:00:00');
+      const c=s.replace(/T.*/,'').replace(/-/g,'');
+      if(c.length<8) return null;
+      return new Date(c.slice(0,4)+'-'+c.slice(4,6)+'-'+c.slice(6,8)+'T12:00:00');
     };
-    const ci = pd(dtstart), co = pd(dtend);
-    if (!ci || !co || isNaN(ci) || isNaN(co)) continue;
-    const nights = Math.round((co - ci) / 86400000);
-    if (nights <= 0) continue;
-    const name = summary || 'Réservation';
-    events.push({ platform, name, ci: ci.toISOString().slice(0,10), co: co.toISOString().slice(0,10), nights, status: status === 'CANCELLED' ? 'cancelled' : 'confirmed' });
+    const ci=pd(dtstart), co=pd(dtend);
+    if(!ci||!co||isNaN(ci)||isNaN(co)) continue;
+    const nights=Math.round((co-ci)/86400000);
+    if(nights<=0) continue;
+    evts.push({platform, name:summary||'Réservation', ci:ci.toISOString().slice(0,10), co:co.toISOString().slice(0,10), nights, status:status==='CANCELLED'?'cancelled':'confirmed'});
   }
-  return events;
+  return evts;
 }
 
 async function loadAll() {
-  const dot = document.getElementById('sync-dot');
-  const txt = document.getElementById('sync-text');
-  dot.className = 'sync-dot syncing';
-  txt.textContent = '…';
-  document.getElementById('menage-content').innerHTML = '<div class="loading"><div class="spinner"></div><p>Connexion aux calendriers…</p><small>Peut prendre quelques secondes</small></div>';
-  document.getElementById('reserv-content').innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement…</p></div>';
+  const dot=document.getElementById('sdot'), txt=document.getElementById('stext');
+  const sp=document.getElementById('sp-status');
+  dot.className='sdot loading'; txt.textContent='…';
+  document.getElementById('mc').innerHTML='<div class="loading"><div class="spinner"></div><p>Connexion aux calendriers…</p><small>Via votre proxy sécurisé</small></div>';
+  document.getElementById('rc').innerHTML='<div class="loading"><div class="spinner"></div><p>Chargement…</p></div>';
 
-  let ab = [], bk = [], errors = [];
-
+  let ab=[], bk=[], errors=[];
   try {
-    const text = await fetchWithFallback(AIRBNB_URL);
-    ab = parseICS(text, 'airbnb');
-  } catch(e) { errors.push('Airbnb : ' + e.message); }
-
+    if(sp) sp.textContent='Airbnb…';
+    ab = await fetchIcal(AIRBNB_URL,'airbnb');
+  } catch(e) { errors.push('Airbnb : '+e.message); }
   try {
-    const text = await fetchWithFallback(BOOKING_URL);
-    bk = parseICS(text, 'booking');
-  } catch(e) { errors.push('Booking : ' + e.message); }
+    if(sp) sp.textContent='Booking.com…';
+    bk = await fetchIcal(BOOKING_URL,'booking');
+  } catch(e) { errors.push('Booking : '+e.message); }
 
-  STATE.bookings = [...ab, ...bk].filter(b => b.status !== 'cancelled').sort((a,b) => new Date(a.ci) - new Date(b.ci));
-  STATE.loaded = true;
-
-  if (errors.length === 2) {
-    dot.className = 'sync-dot error';
-    txt.textContent = 'Erreur';
-  } else {
-    dot.className = 'sync-dot';
-    txt.textContent = new Date().toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
-  }
-
-  renderMenage(errors);
-  renderReservations(errors);
-  renderCalendar();
+  S.bk=[...ab,...bk].filter(b=>b.status!=='cancelled').sort((a,b)=>new Date(a.ci)-new Date(b.ci));
+  S.loaded=true;
+  dot.className=errors.length===2?'sdot err':'sdot';
+  txt.textContent=errors.length===2?'Erreur':new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  renderMenage(errors); renderReservations(errors); renderCalendar();
   hideSplash();
 }
 
-function hideSplash() {
-  const s = document.getElementById('splash');
-  if (s) { s.classList.add('hide'); setTimeout(() => s.remove(), 600); }
+function hideSplash(){const s=document.getElementById('splash');if(s){s.classList.add('hide');setTimeout(()=>s.remove(),600);}}
+
+const fmtLong=ds=>new Date(ds+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+const fmtShort=ds=>new Date(ds+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+const fmtDow=ds=>{const d=new Date(ds+'T12:00:00');return DAYS_FR[d.getDay()===0?6:d.getDay()-1];};
+
+function urgency(ds){
+  const today=new Date();today.setHours(0,0,0,0);
+  const diff=Math.round((new Date(ds+'T12:00:00')-today)/86400000);
+  if(diff===0) return {c:'today',t:"Aujourd'hui"};
+  if(diff===1) return {c:'tomorrow',t:'Demain'};
+  if(diff<=5) return {c:'soon',t:'Dans '+diff+' j'};
+  return {c:'ok',t:'J+'+diff};
 }
 
-function fmtDate(ds) {
-  const d = new Date(ds + 'T12:00:00');
-  return d.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
-}
-function fmtShort(ds) {
-  return new Date(ds + 'T12:00:00').toLocaleDateString('fr-FR', {day:'numeric', month:'short'});
-}
-function fmtDow(ds) {
-  const d = new Date(ds + 'T12:00:00');
-  return DAYS_FR[d.getDay() === 0 ? 6 : d.getDay() - 1];
-}
-function urgency(ds) {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const diff = Math.round((new Date(ds + 'T12:00:00') - today) / 86400000);
-  if (diff === 0) return {cls:'today', txt:"Aujourd'hui"};
-  if (diff === 1) return {cls:'tomorrow', txt:'Demain'};
-  if (diff <= 5) return {cls:'soon', txt:'Dans ' + diff + ' j'};
-  return {cls:'ok', txt:'J+' + diff};
-}
-
-function renderMenage(errors=[]) {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const in60 = new Date(today); in60.setDate(today.getDate() + 60);
-  const tasks = {};
-  STATE.bookings.forEach(b => {
-    const coD = new Date(b.co + 'T12:00:00'), ciD = new Date(b.ci + 'T12:00:00');
-    if (coD >= today && coD <= in60) { if (!tasks[b.co]) tasks[b.co]=[]; tasks[b.co].push({type:'out', b}); }
-    if (ciD >= today && ciD <= in60) { if (!tasks[b.ci]) tasks[b.ci]=[]; tasks[b.ci].push({type:'in', b}); }
+function renderMenage(errors=[]){
+  const today=new Date();today.setHours(0,0,0,0);
+  const in60=new Date(today);in60.setDate(today.getDate()+60);
+  const tasks={};
+  S.bk.forEach(b=>{
+    const coD=new Date(b.co+'T12:00:00'),ciD=new Date(b.ci+'T12:00:00');
+    if(coD>=today&&coD<=in60){if(!tasks[b.co])tasks[b.co]=[];tasks[b.co].push({type:'out',b});}
+    if(ciD>=today&&ciD<=in60){if(!tasks[b.ci])tasks[b.ci]=[];tasks[b.ci].push({type:'in',b});}
   });
-  const dates = Object.keys(tasks).sort();
-  let html = '';
-  if (errors.length) {
-    html += errors.map(e => `<div class="error-box">⚠️ ${e}<br><small>Vérifiez votre connexion internet</small></div>`).join('');
-    if (errors.length < 2) html += `<div class="warn-box">⚠️ Données partielles — une plateforme est inaccessible</div>`;
-  }
-  if (dates.length === 0 && errors.length === 0) {
-    html += '<div class="empty-state">✓ Aucun ménage prévu<br>dans les 60 prochains jours.</div>';
-  } else {
-    dates.forEach(ds => {
-      const urg = urgency(ds), dl = fmtDate(ds);
-      html += `<div class="task-card"><div class="task-date-row"><span class="task-date-label">${dl.charAt(0).toUpperCase()+dl.slice(1)}</span><span class="urgency ${urg.cls}">${urg.txt}</span></div>`;
-      tasks[ds].forEach(t => {
-        const {type, b} = t;
-        const isOut = type === 'out';
-        const pc = b.platform === 'airbnb' ? '#FF5A5F' : 'var(--booking)';
-        const pn = b.platform === 'airbnb' ? 'Airbnb' : 'Booking.com';
-        const other = isOut ? `Arrivé le ${fmtShort(b.ci)}` : `Repart le ${fmtShort(b.co)}`;
-        html += `<div class="task-row">
-          <span class="task-type ${isOut?'out':'in'}">${isOut?'DÉPART':'ARRIVÉE'}</span>
-          <div><div class="task-name">${b.name}</div>
-          <div class="task-detail">${other} · ${b.nights} nuit${b.nights>1?'s':''}</div>
-          <div class="task-plat" style="color:${pc}">${pn}</div></div>
-        </div>`;
-      });
-      html += '</div>';
+  const dates=Object.keys(tasks).sort();
+  let html='';
+  if(errors.length) html+=errors.map(e=>`<div class="ebox">⚠️ ${e}</div>`).join('');
+  if(!dates.length&&!errors.length) html='<div class="empty-state">✓ Aucun ménage prévu<br>dans les 60 prochains jours.</div>';
+  dates.forEach(ds=>{
+    const u=urgency(ds),dl=fmtLong(ds);
+    html+=`<div class="tcard"><div class="tcard-top"><span class="tcard-date">${dl.charAt(0).toUpperCase()+dl.slice(1)}</span><span class="urg ${u.c}">${u.t}</span></div>`;
+    tasks[ds].forEach(t=>{
+      const {type,b}=t,isOut=type==='out';
+      const pc=b.platform==='airbnb'?'#FF5A5F':'var(--booking)';
+      const pn=b.platform==='airbnb'?'Airbnb':'Booking.com';
+      const other=isOut?`Arrivé le ${fmtShort(b.ci)}`:`Repart le ${fmtShort(b.co)}`;
+      html+=`<div class="trow"><span class="ttype ${isOut?'out':'in'}">${isOut?'DÉPART':'ARRIVÉE'}</span>
+        <div><div class="tname">${b.name}</div><div class="tdetail">${other} · ${b.nights} nuit${b.nights>1?'s':''}</div>
+        <div class="tplat" style="color:${pc}">${pn}</div></div></div>`;
     });
-  }
-  if (errors.length > 0) html += `<button class="retry-btn" onclick="loadAll()">↺ Réessayer</button>`;
-  document.getElementById('menage-content').innerHTML = html;
+    html+='</div>';
+  });
+  if(errors.length) html+=`<button class="retry" onclick="loadAll()">↺ Réessayer</button>`;
+  document.getElementById('mc').innerHTML=html;
 }
 
-function renderReservations(errors=[]) {
-  const today = new Date(); today.setHours(0,0,0,0);
-  const upcoming = STATE.bookings.filter(b => new Date(b.co+'T12:00:00') >= today);
-  const past = STATE.bookings.filter(b => new Date(b.co+'T12:00:00') < today);
-  let html = '';
-  if (errors.length) html += errors.map(e => `<div class="error-box">⚠️ ${e}</div>`).join('');
-  if (!upcoming.length && !past.length) html += '<div class="empty-state">Aucune réservation trouvée.</div>';
-  if (upcoming.length) { html += `<div class="section-title">À venir (${upcoming.length})</div>`; html += upcoming.map(b => rvCard(b)).join(''); }
-  if (past.length) { html += `<div class="section-title">Passées</div>`; html += past.slice(0,5).map(b => rvCard(b,true)).join(''); }
-  document.getElementById('reserv-content').innerHTML = html;
+function renderReservations(errors=[]){
+  const today=new Date();today.setHours(0,0,0,0);
+  const up=S.bk.filter(b=>new Date(b.co+'T12:00:00')>=today);
+  const past=S.bk.filter(b=>new Date(b.co+'T12:00:00')<today);
+  let html='';
+  if(errors.length) html+=errors.map(e=>`<div class="ebox">⚠️ ${e}</div>`).join('');
+  if(!up.length&&!past.length) html='<div class="empty-state">Aucune réservation trouvée.</div>';
+  if(up.length){html+=`<div class="sec-title">À venir (${up.length})</div>`;html+=up.map(b=>rvCard(b)).join('');}
+  if(past.length){html+=`<div class="sec-title">Passées</div>`;html+=past.slice(0,5).map(b=>rvCard(b,true)).join('');}
+  document.getElementById('rc').innerHTML=html;
 }
 
-function rvCard(b, dim=false) {
-  const pc = b.platform==='airbnb'?'#FF5A5F':'var(--booking)';
-  const pn = b.platform==='airbnb'?'Airbnb':'Booking.com';
-  return `<div class="reserv-card" style="${dim?'opacity:0.5':''}">
-    <div class="rv-top"><div class="rv-plat"><div class="plat-dot" style="background:${pc}"></div>${pn}</div><span class="rv-confirmed">Confirmé</span></div>
-    <div class="rv-name">${b.name}</div><div class="rv-nights">${b.nights} nuit${b.nights>1?'s':''}</div>
-    <div class="rv-dates">
-      <div class="rv-date"><div class="rv-date-lbl">Arrivée</div><div class="rv-date-val">${fmtShort(b.ci)}</div><div class="rv-date-day">${fmtDow(b.ci)}</div></div>
-      <div class="rv-date"><div class="rv-date-lbl">Départ</div><div class="rv-date-val">${fmtShort(b.co)}</div><div class="rv-date-day">${fmtDow(b.co)}</div></div>
+function rvCard(b,dim=false){
+  const pc=b.platform==='airbnb'?'#FF5A5F':'var(--booking)';
+  const pn=b.platform==='airbnb'?'Airbnb':'Booking.com';
+  return `<div class="rcard" style="${dim?'opacity:.5':''}">
+    <div class="rcard-top"><div class="rplat"><div class="pdot" style="background:${pc}"></div>${pn}</div><span class="rconf">Confirmé</span></div>
+    <div class="rname">${b.name}</div><div class="rnights">${b.nights} nuit${b.nights>1?'s':''}</div>
+    <div class="rdates">
+      <div class="rdate"><div class="rdlbl">Arrivée</div><div class="rdval">${fmtShort(b.ci)}</div><div class="rddow">${fmtDow(b.ci)}</div></div>
+      <div class="rdate"><div class="rdlbl">Départ</div><div class="rdval">${fmtShort(b.co)}</div><div class="rddow">${fmtDow(b.co)}</div></div>
     </div></div>`;
 }
 
-function getDayStatus(ds) {
-  const d = new Date(ds + 'T12:00:00');
-  const booked = STATE.bookings.filter(b => d >= new Date(b.ci+'T12:00:00') && d < new Date(b.co+'T12:00:00'));
-  const a = booked.some(b => b.platform==='airbnb'), bk = booked.some(b => b.platform==='booking');
-  if (a&&bk) return 'both'; if (a) return 'airbnb'; if (bk) return 'booking'; return '';
+function getDaySt(ds){
+  const d=new Date(ds+'T12:00:00');
+  const bk=S.bk.filter(b=>d>=new Date(b.ci+'T12:00:00')&&d<new Date(b.co+'T12:00:00'));
+  const a=bk.some(b=>b.platform==='airbnb'),bv=bk.some(b=>b.platform==='booking');
+  if(a&&bv)return'both';if(a)return'airbnb';if(bv)return'booking';return'';
 }
 
-function renderCalendar() {
-  document.getElementById('cal-title').textContent = MONTHS[STATE.calMonth] + ' ' + STATE.calYear;
-  const today = new Date(); today.setHours(0,0,0,0);
-  let html = DAYS_SHORT.map(d => `<div class="cal-dname">${d}</div>`).join('');
-  let dow = new Date(STATE.calYear, STATE.calMonth, 1).getDay();
-  dow = dow===0?6:dow-1;
-  for (let i=0;i<dow;i++) html += `<div class="cal-cell"></div>`;
-  const total = new Date(STATE.calYear, STATE.calMonth+1, 0).getDate();
-  for (let d=1;d<=total;d++) {
-    const ds = `${STATE.calYear}-${String(STATE.calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const cD = new Date(ds+'T12:00:00');
-    const isToday = cD.getTime()===today.getTime(), isPast = cD<today;
-    const st = STATE.loaded ? getDayStatus(ds) : '';
-    const dotC = st==='airbnb'?'#FF5A5F':st==='booking'?'var(--booking)':st==='both'?'#7B6CF6':'';
-    html += `<div class="cal-cell ${st}${isPast&&!isToday?' past':''}${isToday?' today':''}">
+function renderCalendar(){
+  document.getElementById('cal-title').textContent=MONTHS[S.calM]+' '+S.calY;
+  const today=new Date();today.setHours(0,0,0,0);
+  let html=DAYS.map(d=>`<div class="cdname">${d}</div>`).join('');
+  let dow=new Date(S.calY,S.calM,1).getDay();dow=dow===0?6:dow-1;
+  for(let i=0;i<dow;i++) html+=`<div class="ccell"></div>`;
+  const tot=new Date(S.calY,S.calM+1,0).getDate();
+  for(let d=1;d<=tot;d++){
+    const ds=`${S.calY}-${String(S.calM+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const cD=new Date(ds+'T12:00:00');
+    const isT=cD.getTime()===today.getTime(),isP=cD<today;
+    const st=S.loaded?getDaySt(ds):'';
+    const dc=st==='airbnb'?'#FF5A5F':st==='booking'?'var(--booking)':st==='both'?'#7B6CF6':'';
+    html+=`<div class="ccell ${st}${isP&&!isT?' past':''}${isT?' today':''}">
       <span style="font-size:12px">${d}</span>
-      ${dotC?`<div class="cell-dot" style="background:${dotC}"></div>`:''}
+      ${dc?`<div class="cdot" style="background:${dc}"></div>`:''}
     </div>`;
   }
-  document.getElementById('cal-grid').innerHTML = html;
+  document.getElementById('cal-grid').innerHTML=html;
 }
 
-function changeMonth(dir) {
-  STATE.calMonth += dir;
-  if (STATE.calMonth>11){STATE.calMonth=0;STATE.calYear++;}
-  if (STATE.calMonth<0){STATE.calMonth=11;STATE.calYear--;}
-  renderCalendar();
-}
+function chMo(d){S.calM+=d;if(S.calM>11){S.calM=0;S.calY++;}if(S.calM<0){S.calM=11;S.calY--;}renderCalendar();}
 
-function showTab(name, el) {
+function showTab(name,el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
   document.getElementById(name).classList.add('active');
   if(el) el.classList.add('active');
 }
 
-// Sécurité : si le chargement dépasse 15s, on affiche quand même l'app
-setTimeout(hideSplash, 15000);
-
+setTimeout(hideSplash, 20000);
 renderCalendar();
 loadAll();
 </script>
