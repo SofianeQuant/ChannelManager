@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ménage — 2 pl Francis Chirat</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --airbnb: #FF5A5F;
+  --booking: #003B95;
+  --bg: #F7F6F3;
+  --card: #FFFFFF;
+  --text: #1A1A1A;
+  --text2: #888;
+  --text3: #BBB;
+  --border: rgba(0,0,0,0.08);
+  --radius: 16px;
+  --success: #2D9B6F;
+  --success-bg: #EAF5EF;
+  --warn: #C47D00;
+  --warn-bg: #FFF5E0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* TOP BAR */
+.topbar {
+  background: var(--card);
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.topbar-title { font-size: 17px; font-weight: 600; }
+.topbar-sub { font-size: 12px; color: var(--text2); margin-top: 2px; font-family: 'DM Mono', monospace; }
+.sync-row { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+.sync-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
+.sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); animation: blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.refresh-btn { font-size: 12px; font-weight: 500; color: var(--text2); background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; cursor: pointer; transition: all 0.2s; }
+.refresh-btn:active { transform: scale(0.95); background: #eee; }
+
+/* TABS */
+.tabs { display: flex; background: var(--card); border-bottom: 1px solid var(--border); }
+.tab { flex: 1; padding: 13px 6px; font-size: 12px; font-weight: 500; text-align: center; cursor: pointer; color: var(--text2); border-bottom: 2px solid transparent; transition: all 0.2s; }
+.tab.active { color: var(--text); border-bottom-color: var(--text); }
+
+/* CONTENT */
+.content { padding: 16px; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* LOADING */
+.loading { text-align: center; padding: 60px 20px; }
+.spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--text); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p { font-size: 14px; color: var(--text2); }
+
+/* ERROR */
+.error-box { background: #FFF0F0; border: 1px solid rgba(255,90,95,0.2); border-radius: var(--radius); padding: 16px; font-size: 13px; color: #CC2222; margin-bottom: 12px; }
+
+/* NEXT CHECKOUT — hero card */
+.hero-card {
+  background: var(--text);
+  color: white;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.hero-label { font-size: 11px; font-weight: 500; opacity: 0.5; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+.hero-date { font-size: 28px; font-weight: 600; line-height: 1.1; }
+.hero-name { font-size: 14px; opacity: 0.7; margin-top: 6px; }
+.hero-badges { display: flex; gap: 8px; margin-top: 14px; }
+.hero-badge { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.12); }
+
+/* STAT ROW */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.stat { background: var(--card); border-radius: 12px; padding: 14px; border: 1px solid var(--border); }
+.stat-label { font-size: 11px; color: var(--text2); font-weight: 500; margin-bottom: 6px; }
+.stat-val { font-size: 22px; font-weight: 600; }
+.stat-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+/* RESERVATION CARDS */
+.reserv-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 10px;
+  transition: transform 0.15s;
+}
+.reserv-card:active { transform: scale(0.99); }
+.rv-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.rv-plat { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }
+.plat-dot { width: 8px; height: 8px; border-radius: 50%; }
+.rv-status { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
+.rv-status.confirmed { background: var(--success-bg); color: var(--success); }
+.rv-status.pending { background: var(--warn-bg); color: var(--warn); }
+.rv-status.cancelled { background: #FFF0F0; color: #CC2222; }
+.rv-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.rv-summary { font-size: 13px; color: var(--text2); }
+.rv-dates { display: flex; gap: 0; margin-top: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.rv-date-block { flex: 1; padding: 10px 12px; }
+.rv-date-block:first-child { border-right: 1px solid var(--border); }
+.rv-date-label { font-size: 10px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.rv-date-val { font-size: 14px; font-weight: 600; }
+.rv-date-day { font-size: 11px; color: var(--text2); margin-top: 1px; }
+.rv-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.rv-nights { font-size: 12px; color: var(--text2); }
+.rv-price { font-size: 16px; font-weight: 600; }
+
+/* CALENDAR */
+.cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.cal-nav-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: var(--text2); }
+.cal-nav-btn:active { background: var(--bg); }
+.cal-title { font-size: 16px; font-weight: 600; }
+.cal-legend { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); }
+.leg-dot { width: 9px; height: 9px; border-radius: 2px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; background: var(--card); border-radius: var(--radius); padding: 12px; border: 1px solid var(--border); }
+.cal-dname { text-align: center; font-size: 10px; font-weight: 600; color: var(--text2); padding: 4px 0 8px; }
+.cal-cell { aspect-ratio: 1; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.1s; position: relative; }
+.cal-cell.empty { cursor: default; }
+.cal-cell.today { font-weight: 700; background: var(--text) !important; color: white !important; }
+.cal-cell.past { opacity: 0.3; }
+.cal-cell.available { color: var(--text); }
+.cal-cell.airbnb { background: #FFF0F0; color: #CC2222; }
+.cal-cell.booking { background: #EEF2FF; color: var(--booking); }
+.cal-cell.both { background: #F0E8FF; color: #5B4FCF; }
+.cal-cell.blocked { background: var(--bg); color: var(--text3); }
+.cell-num { font-size: 12px; line-height: 1; }
+.cell-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 2px; }
+
+/* MENAGE VIEW */
+.menage-header { background: #1A1A1A; color: white; border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+.menage-icon { font-size: 28px; }
+.menage-header h2 { font-size: 16px; font-weight: 600; }
+.menage-header p { font-size: 12px; opacity: 0.6; margin-top: 2px; }
+.task-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 10px; }
+.task-date { font-size: 11px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+.task-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-top: 1px solid var(--border); }
+.task-type { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-top: 1px; letter-spacing: 0.04em; flex-shrink: 0; }
+.task-type.checkout { background: #FFE8E8; color: #CC2222; }
+.task-type.checkin { background: #E8F0FF; color: var(--booking); }
+.task-type.both { background: #F0E8FF; color: #5B4FCF; }
+.task-info .tname { font-size: 14px; font-weight: 600; }
+.task-info .tdetail { font-size: 12px; color: var(--text2); margin-top: 2px; }
+.urgency { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
+.urgency.today { background: #FFE8E8; color: #CC2222; }
+.urgency.soon { background: var(--warn-bg); color: var(--warn); }
+.urgency.ok { background: var(--success-bg); color: var(--success); }
+.empty-state { text-align: center; padding: 40px 20px; color: var(--text2); font-size: 14px; }
+.section-title { font-size: 13px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.07em; margin: 20px 0 10px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">2 pl Francis Chirat</div>
+  <div class="topbar-sub">Marseille 13000</div>
+  <div class="sync-row">
+    <div class="sync-badge">
+      <div class="sync-dot"></div>
+      <span id="sync-label" style="color:var(--success)">Synchronisé</span>
+    </div>
+    <button class="refresh-btn" onclick="loadAll()">↺ Actualiser</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('menage',this)">🧹 Ménage</div>
+  <div class="tab" onclick="showTab('reservations',this)">📋 Séjours</div>
+  <div class="tab" onclick="showTab('calendar',this)">📅 Calendrier</div>
+</div>
+
+<div class="content">
+
+  <!-- MENAGE -->
+  <div id="menage" class="section active">
+    <div class="menage-header">
+      <div class="menage-icon">🧹</div>
+      <div>
+        <h2>Planning ménage</h2>
+        <p>Check-in & check-out à préparer</p>
+      </div>
+    </div>
+    <div id="menage-content"><div class="loading"><div class="spinner"></div><p>Chargement des réservations…</p></div></div>
+  </div>
+
+  <!-- RESERVATIONS -->
+  <div id="reservations" class="section">
+    <div id="reserv-content"><div class="loading"><div class="spinner"></div><p>Chargement…</p></div></div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div id="calendar" class="section">
+    <div class="cal-nav">
+      <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
+      <span class="cal-title" id="cal-title">Chargement…</span>
+      <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
+    </div>
+    <div class="cal-legend">
+      <div class="leg"><div class="leg-dot" style="background:#FF5A5F"></div>Airbnb</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--booking)"></div>Booking</div>
+      <div class="leg"><div class="leg-dot" style="background:#7B6CF6"></div>Les deux</div>
+    </div>
+    <div class="cal-grid" id="cal-grid"><div style="grid-column:span 7;text-align:center;padding:30px;color:var(--text2);font-size:13px;">Chargement…</div></div>
+  </div>
+
+</div>
+
+<script>
+const AIRBNB_ICAL = 'https://www.airbnb.fr/calendar/ical/1663980886187139384.ics?t=4d5885c92ddf442799a7228450482e29';
+const BOOKING_ICAL = 'https://ical.booking.com/v1/export?t=2318d43e-e6a7-4771-a52a-75abe1b72fa9';
+const PROXY = 'https://api.allorigins.win/get?url=';
+
+const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const DAYS_SHORT = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+const DAYS_LONG = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+
+let STATE = { bookings: [], calMonth: new Date().getMonth(), calYear: new Date().getFullYear(), loaded: false };
+
+function parseICS(text, platform) {
+  const events = [];
+  const blocks = text.split('BEGIN:VEVENT');
+  for (let i = 1; i < blocks.length; i++) {
+    const block = blocks[i];
+    const get = (key) => {
+      const m = block.match(new RegExp(key + '[^:]*:([^\r\n]+)'));
+      return m ? m[1].trim() : '';
+    };
+    const dtstart = get('DTSTART');
+    const dtend = get('DTEND');
+    const summary = get('SUMMARY');
+    const status = get('STATUS');
+    if (!dtstart || !dtend) continue;
+    if (summary && (summary.includes('Not available') || summary.includes('Airbnb (Not available)') || summary === 'Blocked')) continue;
+    const parseDate = (s) => {
+      const clean = s.replace(/T.*/, '');
+      return new Date(clean.slice(0,4)+'-'+clean.slice(4,6)+'-'+clean.slice(6,8));
+    };
+    const ci = parseDate(dtstart);
+    const co = parseDate(dtend);
+    if (isNaN(ci.getTime()) || isNaN(co.getTime())) continue;
+    const name = summary || 'Réservation';
+    const nights = Math.round((co - ci) / 86400000);
+    if (nights <= 0) continue;
+    const ini = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2) || platform[0].toUpperCase();
+    events.push({
+      platform, name, ini,
+      ci: ci.toISOString().slice(0,10),
+      co: co.toISOString().slice(0,10),
+      ciDate: ci, coDate: co,
+      nights,
+      status: status === 'CANCELLED' ? 'cancelled' : 'confirmed'
+    });
+  }
+  return events;
+}
+
+async function fetchICal(url, platform) {
+  const proxyUrl = PROXY + encodeURIComponent(url);
+  const res = await fetch(proxyUrl);
+  const data = await res.json();
+  const text = data.contents;
+  if (!text || !text.includes('BEGIN:VCALENDAR')) throw new Error('Données iCal invalides pour ' + platform);
+  return parseICS(text, platform);
+}
+
+async function loadAll() {
+  document.getElementById('sync-label').textContent = 'Synchronisation…';
+  document.getElementById('sync-label').style.color = 'var(--warn)';
+  document.getElementById('menage-content').innerHTML = '<div class="loading"><div class="spinner"></div><p>Récupération Airbnb & Booking…</p></div>';
+  document.getElementById('reserv-content').innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement…</p></div>';
+
+  let airbnbBookings = [], bookingBookings = [], errors = [];
+
+  try { airbnbBookings = await fetchICal(AIRBNB_ICAL, 'airbnb'); }
+  catch(e) { errors.push('Airbnb : ' + e.message); }
+
+  try { bookingBookings = await fetchICal(BOOKING_ICAL, 'booking'); }
+  catch(e) { errors.push('Booking : ' + e.message); }
+
+  STATE.bookings = [...airbnbBookings, ...bookingBookings]
+    .filter(b => b.status !== 'cancelled')
+    .sort((a,b) => new Date(a.ci) - new Date(b.ci));
+
+  STATE.loaded = true;
+
+  document.getElementById('sync-label').textContent = 'Synchronisé · ' + new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('sync-label').style.color = 'var(--success)';
+
+  renderMenage(errors);
+  renderReservations(errors);
+  renderCalendar();
+}
+
+function fmtDate(ds) {
+  const d = new Date(ds + 'T12:00:00');
+  return d.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
+}
+function fmtShort(ds) {
+  const d = new Date(ds + 'T12:00:00');
+  return d.toLocaleDateString('fr-FR', {day:'numeric', month:'short'});
+}
+function fmtDay(ds) {
+  const d = new Date(ds + 'T12:00:00');
+  return DAYS_LONG[d.getDay() === 0 ? 6 : d.getDay() - 1];
+}
+
+function urgencyLabel(ds) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const d = new Date(ds + 'T12:00:00');
+  const diff = Math.round((d - today) / 86400000);
+  if (diff === 0) return {cls:'today', txt:'Aujourd\'hui'};
+  if (diff === 1) return {cls:'soon', txt:'Demain'};
+  if (diff <= 3) return {cls:'soon', txt:'Dans ' + diff + ' j'};
+  return {cls:'ok', txt: 'J+' + diff};
+}
+
+function renderMenage(errors=[]) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const in30 = new Date(today); in30.setDate(today.getDate() + 30);
+
+  // Group tasks by date
+  const tasks = {};
+  STATE.bookings.forEach(b => {
+    const coDate = new Date(b.co + 'T12:00:00');
+    const ciDate = new Date(b.ci + 'T12:00:00');
+    if (coDate >= today && coDate <= in30) {
+      if (!tasks[b.co]) tasks[b.co] = [];
+      tasks[b.co].push({type:'checkout', booking:b});
+    }
+    if (ciDate >= today && ciDate <= in30) {
+      if (!tasks[b.ci]) tasks[b.ci] = [];
+      tasks[b.ci].push({type:'checkin', booking:b});
+    }
+  });
+
+  const sortedDates = Object.keys(tasks).sort();
+  let html = '';
+
+  if (errors.length) html += errors.map(e => `<div class="error-box">⚠️ ${e}</div>`).join('');
+
+  if (sortedDates.length === 0) {
+    html += '<div class="empty-state">Aucun ménage prévu dans les 30 prochains jours.</div>';
+  } else {
+    sortedDates.forEach(ds => {
+      const urg = urgencyLabel(ds);
+      const dateLabel = fmtDate(ds);
+      html += `<div class="task-card">
+        <div class="task-date">
+          <span>${dateLabel.charAt(0).toUpperCase()+dateLabel.slice(1)}</span>
+          <span class="urgency ${urg.cls}">${urg.txt}</span>
+        </div>`;
+      tasks[ds].forEach(t => {
+        const b = t.booking;
+        const isOut = t.type === 'checkout';
+        const typeLabel = isOut ? 'DÉPART' : 'ARRIVÉE';
+        const typeCls = isOut ? 'checkout' : 'checkin';
+        const otherDate = isOut ? `Arrivé le ${fmtShort(b.ci)}` : `Repart le ${fmtShort(b.co)}`;
+        const platColor = b.platform === 'airbnb' ? '#FF5A5F' : 'var(--booking)';
+        html += `<div class="task-row">
+          <span class="task-type ${typeCls}">${typeLabel}</span>
+          <div class="task-info">
+            <div class="tname">${b.name}</div>
+            <div class="tdetail" style="color:${platColor}">${b.platform === 'airbnb' ? 'Airbnb' : 'Booking.com'}</div>
+            <div class="tdetail">${otherDate} · ${b.nights} nuit${b.nights>1?'s':''}</div>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+    });
+  }
+
+  document.getElementById('menage-content').innerHTML = html;
+}
+
+function renderReservations(errors=[]) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = STATE.bookings.filter(b => new Date(b.co + 'T12:00:00') >= today);
+  const past = STATE.bookings.filter(b => new Date(b.co + 'T12:00:00') < today);
+
+  let html = '';
+  if (errors.length) html += errors.map(e => `<div class="error-box">⚠️ ${e}</div>`).join('');
+
+  if (upcoming.length === 0 && past.length === 0) {
+    html += '<div class="empty-state">Aucune réservation trouvée.</div>';
+  }
+
+  if (upcoming.length > 0) {
+    html += `<div class="section-title">À venir (${upcoming.length})</div>`;
+    html += upcoming.map(b => reservCard(b)).join('');
+  }
+  if (past.length > 0) {
+    html += `<div class="section-title">Passées (${past.length})</div>`;
+    html += past.slice(0,5).map(b => reservCard(b, true)).join('');
+  }
+
+  document.getElementById('reserv-content').innerHTML = html;
+}
+
+function reservCard(b, dim=false) {
+  const platColor = b.platform === 'airbnb' ? '#FF5A5F' : 'var(--booking)';
+  const platName = b.platform === 'airbnb' ? 'Airbnb' : 'Booking.com';
+  return `<div class="reserv-card" style="${dim?'opacity:0.55':''}">
+    <div class="rv-header">
+      <div class="rv-plat"><div class="plat-dot" style="background:${platColor}"></div>${platName}</div>
+      <span class="rv-status confirmed">Confirmé</span>
+    </div>
+    <div class="rv-name">${b.name}</div>
+    <div class="rv-summary">${b.nights} nuit${b.nights>1?'s':''}</div>
+    <div class="rv-dates">
+      <div class="rv-date-block">
+        <div class="rv-date-label">Arrivée</div>
+        <div class="rv-date-val">${fmtShort(b.ci)}</div>
+        <div class="rv-date-day">${fmtDay(b.ci)}</div>
+      </div>
+      <div class="rv-date-block">
+        <div class="rv-date-label">Départ</div>
+        <div class="rv-date-val">${fmtShort(b.co)}</div>
+        <div class="rv-date-day">${fmtDay(b.co)}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function getDayStatus(ds) {
+  const d = new Date(ds + 'T12:00:00');
+  const booked = STATE.bookings.filter(b => {
+    return d >= new Date(b.ci+'T12:00:00') && d < new Date(b.co+'T12:00:00');
+  });
+  const a = booked.some(b => b.platform === 'airbnb');
+  const bk = booked.some(b => b.platform === 'booking');
+  if (a && bk) return 'both';
+  if (a) return 'airbnb';
+  if (bk) return 'booking';
+  return 'available';
+}
+
+function renderCalendar() {
+  document.getElementById('cal-title').textContent = MONTHS[STATE.calMonth] + ' ' + STATE.calYear;
+  const today = new Date(); today.setHours(0,0,0,0);
+  let html = DAYS_SHORT.map(d => `<div class="cal-dname">${d}</div>`).join('');
+  let dow = new Date(STATE.calYear, STATE.calMonth, 1).getDay();
+  dow = dow === 0 ? 6 : dow - 1;
+  for (let i=0; i<dow; i++) html += `<div class="cal-cell empty"></div>`;
+  const total = new Date(STATE.calYear, STATE.calMonth+1, 0).getDate();
+  for (let d=1; d<=total; d++) {
+    const ds = `${STATE.calYear}-${String(STATE.calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const cellDate = new Date(ds+'T12:00:00');
+    const isToday = cellDate.getTime() === today.getTime();
+    const isPast = cellDate < today;
+    const status = STATE.loaded ? getDayStatus(ds) : 'available';
+    let dotColor = '';
+    if (status==='airbnb') dotColor='#FF5A5F';
+    else if (status==='booking') dotColor='var(--booking)';
+    else if (status==='both') dotColor='#7B6CF6';
+    html += `<div class="cal-cell ${status}${isPast&&!isToday?' past':''}${isToday?' today':''}">
+      <span class="cell-num">${d}</span>
+      ${dotColor ? `<div class="cell-dot" style="background:${dotColor}"></div>` : ''}
+    </div>`;
+  }
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
+function changeMonth(dir) {
+  STATE.calMonth += dir;
+  if (STATE.calMonth > 11) { STATE.calMonth = 0; STATE.calYear++; }
+  if (STATE.calMonth < 0) { STATE.calMonth = 11; STATE.calYear--; }
+  renderCalendar();
+}
+
+function showTab(name, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  if (el) el.classList.add('active');
+}
+
+// Init
+renderCalendar();
+loadAll();
+</script>
+</body>
+</html>
