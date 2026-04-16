@@ -203,8 +203,13 @@ function parseICS(text, platform) {
     const get = k => { const m = b.match(new RegExp(k+'[^:]*:([^\r\n]+)')); return m?m[1].trim():''; };
     const dtstart=get('DTSTART'), dtend=get('DTEND'), summary=get('SUMMARY'), status=get('STATUS');
     if (!dtstart||!dtend) continue;
-    const SKIP=['Not available','Airbnb (Not available)','Blocked','CLOSED','Unavailable'];
-    if (SKIP.some(s=>summary.includes(s))) continue;
+    // Airbnb: ignorer les blocages internes
+    if (platform==='airbnb') {
+      const SKIP_AIR=['Not available','Airbnb (Not available)','Blocked','Unavailable'];
+      if (SKIP_AIR.some(s=>summary.includes(s))) continue;
+    }
+    // Booking: "CLOSED - Not available" = vraie réservation, on la garde avec label propre
+    const displayName = (platform==='booking' && summary.includes('CLOSED')) ? 'Réservation Booking' : (summary||'Réservation');
     const pd = s => {
       const c=s.replace(/T.*/,'').replace(/-/g,'');
       if(c.length<8) return null;
@@ -214,7 +219,7 @@ function parseICS(text, platform) {
     if(!ci||!co||isNaN(ci)||isNaN(co)) continue;
     const nights=Math.round((co-ci)/86400000);
     if(nights<=0) continue;
-    evts.push({platform, name:summary||'Réservation', ci:ci.toISOString().slice(0,10), co:co.toISOString().slice(0,10), nights, status:status==='CANCELLED'?'cancelled':'confirmed'});
+    evts.push({platform, name:displayName, ci:ci.toISOString().slice(0,10), co:co.toISOString().slice(0,10), nights, status:status==='CANCELLED'?'cancelled':'confirmed'});
   }
   return evts;
 }
